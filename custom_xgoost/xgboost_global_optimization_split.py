@@ -24,7 +24,6 @@ class CustomXGBoostWithGlobalTree:
         # y_pred = np.full_like(y, self.init_val)
         y_pred = np.full_like(y, self.init_val, dtype=np.float64)
 
-
         for _ in range(self.n_estimators):
             residual = y - y_pred
             tree = GlobalOptimizationDecisionTreeRegressor(
@@ -43,4 +42,3 @@ class CustomXGBoostWithGlobalTree:
         for tree in self.trees:
             y_pred += self.learning_rate * tree.predict(X)
         return y_pred
-
